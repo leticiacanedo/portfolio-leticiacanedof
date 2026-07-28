@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letícia Canedo — UGC Creator & TikTok Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF7F3;
+    --surface: #FFFFFF;
+    --surface-ugc: #F5EFFB;
+    --surface-shop: #EAF6F1;
+    --ink: #2A2733;
+    --ink-soft: #726D80;
+    --line: #E9E2F4;
+    --line-shop: #DDEEE6;
+    --rose: #E7A9B8;
+    --rose-deep: #C97E92;
+    --lilac: #B6A6DE;
+    --lilac-deep: #8E79C4;
+    --mint: #8FCBAE;
+    --mint-deep: #5A9E7E;
+    --peach: #F0CBA3;
+    --gold: #E3C089;
+    --radius: 26px;
+    --shadow: 0 14px 34px rgba(42,39,51,0.09);
+    --shadow-sm: 0 6px 16px rgba(42,39,51,0.07);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Fraunces', serif; line-height:1.08; font-weight:600; letter-spacing:-0.01em; }
+  .mono{ font-family:'Space Grotesk', sans-serif; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
+  ::selection{ background:var(--lilac); color:#fff; }
+  a:focus-visible, button:focus-visible{ outline:3px solid var(--lilac-deep); outline-offset:3px; border-radius:8px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; } }
+
+  /* ---------- NAV ---------- */
+  header{ position:sticky; top:0; z-index:50; background:rgba(251,247,243,0.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; }
+  .logo{ font-family:'Fraunces', serif; font-weight:600; font-size:1.4rem; display:flex; align-items:center; gap:9px; }
+  .logo .dot{ width:9px; height:9px; border-radius:50%; background:linear-gradient(135deg, var(--rose), var(--mint)); display:inline-block; }
+  .nav-links{ display:none; gap:30px; font-weight:500; font-size:0.93rem; color:var(--ink-soft); }
+  @media (min-width:900px){ .nav-links{ display:flex; } }
+  .nav-links a{ position:relative; padding-bottom:4px; transition:color .2s ease; }
+  .nav-links a:hover{ color:var(--ink); }
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:0.92rem; padding:13px 24px; border-radius:100px; border:1px solid transparent; background:var(--ink); color:var(--bg); box-shadow:var(--shadow-sm); transition:transform .18s ease, box-shadow .18s ease, background .2s ease; cursor:pointer; }
+  .btn:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+  .btn.outline{ background:transparent; color:var(--ink); border:1px solid var(--ink); box-shadow:none; }
+  .btn.rose{ background:var(--rose-deep); color:#fff; }
+  .btn.mint{ background:var(--mint-deep); color:#fff; }
+  .nav-cta{ display:none; }
+  @media (min-width:900px){ .nav-cta{ display:inline-flex; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:88px 0 70px; }
+  .hero .wrap{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:52px; align-items:center; }
+  @media (max-width:940px){ .hero .wrap{ grid-template-columns:1fr; } }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--line); border-radius:100px; padding:8px 16px; font-weight:600; font-size:0.82rem; color:var(--ink-soft); margin-bottom:24px; box-shadow:var(--shadow-sm); }
+  .eyebrow b{ color:var(--ink); }
+  .hero h1{ font-size:clamp(2.3rem, 4.6vw, 3.6rem); }
+  .hero h1 em{ font-style:normal; background:linear-gradient(90deg, var(--rose-deep), var(--mint-deep)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p.lede{ margin-top:22px; font-size:1.1rem; color:var(--ink-soft); max-width:48ch; }
+  .hero .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:32px; }
+  .hero .trust{ margin-top:46px; display:flex; gap:34px; flex-wrap:wrap; }
+  .hero .trust div{ font-family:'Space Grotesk'; font-size:1.5rem; font-weight:700; }
+  .hero .trust span{ display:block; font-family:'Inter'; font-size:0.78rem; font-weight:500; color:var(--ink-soft); margin-top:2px; }
+
+  /* split phones */
+  .split-visual{ position:relative; height:460px; display:flex; align-items:center; justify-content:center; gap:18px; }
+  .phone{ width:190px; height:390px; background:var(--surface); border:1px solid var(--line); border-radius:34px; box-shadow:var(--shadow); padding:10px; display:flex; flex-direction:column; gap:8px; }
+  .phone.ugc{ transform:rotate(-5deg) translateY(10px); }
+  .phone.shop{ transform:rotate(5deg) translateY(-10px); }
+  .phone .screen{ flex:1; border-radius:24px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:14px; }
+  .phone.ugc .screen{ background:linear-gradient(165deg, #F7DEE6, #DCCBF2); }
+  .phone.shop .screen{ background:linear-gradient(165deg, #D7EFE2, #F3E1C4); }
+  .phone .screen .top-badge{ align-self:flex-start; background:rgba(255,255,255,0.85); border-radius:100px; padding:5px 12px; font-size:0.68rem; font-weight:700; font-family:'Space Grotesk'; }
+  .phone .screen .bottom-badge{ background:rgba(42,39,51,0.85); color:#fff; border-radius:12px; padding:8px 10px; font-size:0.72rem; font-weight:600; }
+  .phone .play{ position:absolute; top:44%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-sm); }
+  .connector-label{ position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--bg); font-family:'Space Grotesk'; font-size:0.72rem; font-weight:600; padding:8px 16px; border-radius:100px; white-space:nowrap; box-shadow:var(--shadow-sm); }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust-strip{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0; }
+  .trust-strip .wrap{ display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  .trust-strip .label{ font-size:0.8rem; color:var(--ink-soft); font-weight:600; white-space:nowrap; }
+  .trust-strip .logos{ display:flex; gap:34px; flex-wrap:wrap; opacity:0.7; }
+  .trust-strip .logos span{ font-family:'Space Grotesk'; font-weight:600; font-size:0.98rem; }
+
+  /* brand marquee */
+  .brand-marquee{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface); padding:22px 0; overflow:hidden; white-space:nowrap; }
+  .brand-marquee-track{ display:inline-flex; gap:3.2rem; animation:brand-scroll 26s linear infinite; }
+  .brand-marquee-track span{ font-family:'Space Grotesk'; font-weight:600; font-size:1.05rem; color:var(--ink-soft); opacity:0.75; letter-spacing:0.01em; }
+  @keyframes brand-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .brand-marquee:hover .brand-marquee-track{ animation-play-state:paused; }
+
+  /* ---------- SEGMENT SECTIONS ---------- */
+  .segment{ padding:96px 0; }
+  .segment.ugc{ background:var(--surface-ugc); }
+  .segment.shop{ background:var(--surface-shop); }
+  .segment-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap; margin-bottom:52px; }
+  .segment-head .tag{ display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk'; font-weight:600; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
+  .segment.ugc .tag{ color:var(--rose-deep); }
+  .segment.shop .tag{ color:var(--mint-deep); }
+  .segment-head h2{ font-size:clamp(1.8rem, 3.4vw, 2.5rem); max-width:16ch; }
+  .segment-head p{ color:var(--ink-soft); max-width:38ch; font-size:1rem; }
+
+  /* metrics */
+  .metrics-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:56px; }
+  @media (max-width:900px){ .metrics-grid{ grid-template-columns:repeat(2,1fr); } }
+  .metric-card{ background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:26px 22px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; }
+  .segment.shop .metric-card{ border-color:var(--line-shop); }
+  .metric-card .bar-deco{ position:absolute; right:16px; top:20px; display:flex; align-items:flex-end; gap:3px; height:34px; opacity:0.5; }
+  .metric-card .bar-deco i{ display:block; width:5px; border-radius:3px; }
+  .segment.ugc .bar-deco i{ background:var(--rose); }
+  .segment.shop .bar-deco i{ background:var(--mint); }
+  .metric-value{ font-family:'Space Grotesk'; font-size:2.1rem; font-weight:700; }
+  .metric-label{ font-size:0.85rem; color:var(--ink-soft); margin-top:6px; font-weight:500; }
+
+  /* portfolio grid within segment */
+  .segment-portfolio-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+  .segment-portfolio-head h3{ font-family:'Fraunces'; font-size:1.3rem; font-weight:600; }
+  .reel-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  @media (max-width:1000px){ .reel-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .reel-grid{ grid-template-columns:1fr; } }
+
+  /* theme sub-sections + real video embeds */
+  .theme-nav{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:48px; }
+  .theme-nav a{ font-family:'Space Grotesk'; font-size:0.82rem; font-weight:600; background:var(--surface); border:1px solid var(--line); padding:8px 16px; border-radius:100px; color:var(--ink-soft); transition:all .2s ease; }
+  .theme-nav a:hover{ color:var(--rose-deep); border-color:var(--rose); }
+  .theme-block{ margin-bottom:48px; scroll-margin-top:90px; }
+  .theme-block:last-child{ margin-bottom:0; }
+  .theme-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:20px; }
+  .theme-head .theme-icon{ font-size:1.25rem; }
+  .theme-head h3{ font-family:'Fraunces'; font-weight:600; font-size:1.2rem; }
+  .theme-head .theme-count{ font-family:'Space Grotesk'; font-size:0.75rem; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line); padding:3px 11px; border-radius:100px; }
+  .reel-card .thumb{ background:#EFE7F8; }
+  .reel-card .thumb iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .reel-card{ background:var(--surface); border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .2s ease; }
+  .segment.shop .reel-card{ border-color:var(--line-shop); }
+  .reel-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .reel-card .thumb{ aspect-ratio:9/16; position:relative; display:flex; align-items:flex-start; justify-content:space-between; padding:12px; }
+  .reel-card .thumb .play{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.92); display:flex; align-items:center; justify-content:center; }
+  .reel-card .thumb .shop-tag{ background:var(--ink); color:#fff; font-size:0.65rem; font-weight:700; padding:5px 9px; border-radius:100px; font-family:'Space Grotesk'; }
+  .reel-card .meta{ padding:14px 16px; }
+  .reel-card .meta .cat{ font-family:'Space Grotesk'; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
+  .segment.ugc .reel-card .meta .cat{ color:var(--rose-deep); }
+  .segment.shop .reel-card .meta .cat{ color:var(--mint-deep); }
+  .reel-card .meta h4{ font-family:'Fraunces'; font-weight:600; font-size:1rem; margin-top:4px; }
+  .u1 .thumb{ background:linear-gradient(160deg, #F7DEE6, #E4C9EE); }
+  .u2 .thumb{ background:linear-gradient(160deg, #E9D8F5, #C9BCEA); }
+  .u3 .thumb{ background:linear-gradient(160deg, #F3E3EC, #D9C3E8); }
+  .u4 .thumb{ background:linear-gradient(160deg, #FBE7EE, #E6CDE0); }
+  .s1 .thumb{ background:linear-gradient(160deg, #DCF0E3, #C7E7D3); }
+  .s2 .thumb{ background:linear-gradient(160deg, #F3E7CC, #EBD3A4); }
+  .s3 .thumb{ background:linear-gradient(160deg, #D8EEE6, #B9DFCB); }
+  .s4 .thumb{ background:linear-gradient(160deg, #EFE4C9, #E3CC9C); }
+
+  /* proof cards (TikTok Shop screenshots) */
+  .proof-card{ background:var(--surface); border:1px solid var(--line-shop); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .2s ease; }
+  .proof-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .proof-thumb{ aspect-ratio:9/16; background:#F2EFE8; display:flex; align-items:center; justify-content:center; padding:10px; }
+  .proof-thumb img{ width:100%; height:100%; object-fit:contain; border-radius:10px; }
+
+  /* ---------- SERVICES ---------- */
+  section.services{ padding:100px 0; }
+  .section-head{ max-width:600px; margin-bottom:52px; }
+  .section-head .tag{ font-family:'Space Grotesk'; font-weight:600; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--lilac-deep); margin-bottom:10px; display:block; }
+  .section-head h2{ font-size:clamp(1.8rem, 3.4vw, 2.5rem); }
+  .section-head p{ margin-top:14px; color:var(--ink-soft); font-size:1.02rem; }
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .services-grid{ grid-template-columns:1fr; } }
+  .service-card{ border:1px solid var(--line); border-radius:var(--radius); padding:34px 28px; background:var(--surface); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; }
+  .service-card.featured{ background:var(--ink); color:var(--bg); border-color:var(--ink); box-shadow:var(--shadow); }
+  .service-card .kicker{ font-family:'Space Grotesk'; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; opacity:0.65; margin-bottom:10px; }
+  .service-card h3{ font-family:'Fraunces'; font-size:1.35rem; margin-bottom:6px; }
+  .service-price{ font-family:'Space Grotesk'; font-size:2rem; font-weight:700; margin:16px 0; }
+  .service-price span{ font-family:'Inter'; font-size:0.9rem; font-weight:500; color:var(--ink-soft); }
+  .service-card.featured .service-price span{ color:#C7C2D6; }
+  .service-card ul{ list-style:none; margin:16px 0 26px; flex:1; }
+  .service-card li{ padding:7px 0; font-size:0.94rem; display:flex; gap:9px; }
+  .service-card li::before{ content:"—"; opacity:0.5; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  section.testimonials{ padding:20px 0 100px; }
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .testi-grid{ grid-template-columns:1fr; } }
+  .testi-card{ background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:28px; box-shadow:var(--shadow-sm); }
+  .testi-card .seg-flag{ font-family:'Space Grotesk'; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 10px; border-radius:100px; display:inline-block; margin-bottom:16px; }
+  .testi-card.ugc .seg-flag{ background:var(--surface-ugc); color:var(--rose-deep); }
+  .testi-card.shop .seg-flag{ background:var(--surface-shop); color:var(--mint-deep); }
+  .testi-card p{ color:var(--ink-soft); font-size:0.98rem; margin-bottom:20px; }
+  .testi-who{ display:flex; align-items:center; gap:10px; }
+  .testi-avatar{ width:38px; height:38px; border-radius:50%; background:linear-gradient(160deg, var(--rose), var(--mint)); }
+  .testi-who strong{ font-size:0.92rem; display:block; }
+  .testi-who span{ font-size:0.8rem; color:var(--ink-soft); }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:var(--ink); color:var(--bg); border-radius:36px; margin:0 20px; padding:80px 40px; text-align:center; }
+  @media (min-width:860px){ .contact{ margin:0 auto; max-width:1140px; } }
+  .contact h2{ font-size:clamp(2rem,4.2vw,3rem); margin-bottom:18px; }
+  .contact p{ color:#C7C2D6; max-width:52ch; margin:0 auto 34px; font-size:1.03rem; }
+  .contact .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .contact .btn{ background:var(--bg); color:var(--ink); }
+  .contact .btn.outline{ background:transparent; color:var(--bg); border:1px solid #55506A; }
+  .social-row{ display:flex; justify-content:center; gap:14px; margin-top:40px; flex-wrap:wrap; }
+  .social-row a{ border:1px solid #454057; border-radius:100px; padding:9px 20px; font-weight:500; font-size:0.88rem; transition:border-color .2s ease, color .2s ease; }
+  .social-row a:hover{ border-color:var(--rose); color:var(--rose); }
+
+  footer{ padding:36px 0 44px; text-align:center; font-size:0.85rem; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo"><span class="dot"></span>Letícia Canedo</a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#ugc">UGC</a>
+      <a href="#tiktok-shop">TikTok Shop</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#depoimentos">Depoimentos</a>
+    </div>
+    <a href="#contato" class="btn nav-cta">Falar comigo</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">🎬 <b>UGC Creator</b> &amp; <b>Criadora Afiliada TikTok Shop</b></div>
+        <h1>Conteúdo autêntico que <em>engaja e vende</em>.</h1>
+        <p class="lede">Sou Letícia Canedo. Crio vídeos de UGC para marcas que querem se conectar com público real — e vídeos shoppable de alta conversão para quem vende no TikTok Shop. Um único portfólio, dois resultados.</p>
+        <div class="cta-row">
+          <a href="#ugc" class="btn rose">Ver métricas de UGC</a>
+          <a href="#tiktok-shop" class="btn mint">Ver métricas TikTok Shop</a>
+        </div>
+        <div class="trust">
+          <div>3,2M+ <span>visualizações geradas</span></div>
+          <div>R$ 180K+ <span>em GMV gerado</span></div>
+          <div>20+ <span>marcas atendidas</span></div>
+        </div>
+      </div>
+
+      <div class="split-visual" aria-hidden="true">
+        <div class="phone ugc">
+          <div class="screen">
+            <span class="top-badge">UGC</span>
+            <div class="play">▶</div>
+            <span class="bottom-badge">Review autêntico</span>
+          </div>
+        </div>
+        <div class="phone shop">
+          <div class="screen">
+            <span class="top-badge">TikTok Shop</span>
+            <div class="play">▶</div>
+            <span class="bottom-badge">Vídeo shoppable</span>
+          </div>
+        </div>
+        <span class="connector-label">um portfólio, dois públicos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND MARQUEE -->
+  <div class="brand-marquee" aria-label="Marcas que já confiaram no trabalho de Letícia Canedo">
+    <div class="brand-marquee-track">
+      <span>Pampers</span><span>Americanas</span><span>Rap10</span><span>Kinedu</span><span>Leiturinha</span><span>Natura</span><span>L'Oréal Paris</span><span>CIF</span><span>Magalu</span><span>Sam's Club</span>
+      <span>Pampers</span><span>Americanas</span><span>Rap10</span><span>Kinedu</span><span>Leiturinha</span><span>Natura</span><span>L'Oréal Paris</span><span>CIF</span><span>Magalu</span><span>Sam's Club</span>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre" style="padding:96px 0 40px;">
+    <div class="wrap" style="max-width:720px;">
+      <span class="section-head-tag" style="font-family:'Space Grotesk'; font-weight:600; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--lilac-deep); display:block; margin-bottom:12px;">sobre mim</span>
+      <h2 style="font-size:clamp(1.8rem,3.2vw,2.3rem); margin-bottom:18px;">A pessoa por trás da câmera — e das vendas</h2>
+      <p style="color:var(--ink-soft); font-size:1.05rem;">Mineira de BH, UGC, influenciadora, mãe de duas, esposa e apaixonada por compartilhar a vida real! Divido meu dia a dia entre maternidade, rotina de casa e dicas práticas que facilitam a vida. Minha conexão com mulheres e mães me permite entender suas necessidades e desejos, criando estratégias autênticas que fortalecem a relação entre elas e a marca. Faço da comunicação uma arte, traduzindo emoções em resultados.</p>
+    </div>
+  </section>
+
+  <!-- SEGMENTO UGC -->
+  <section class="segment ugc" id="ugc">
+    <div class="wrap">
+      <div class="segment-head">
+        <div>
+          <span class="tag">◆ Conteúdo de marca</span>
+          <h2>UGC que constrói confiança real</h2>
+        </div>
+        <p style="max-width:44ch;">Conteúdo para redes sociais, sites, marketplaces de forma vitalícia e em anúncios por tempo determinado em contrato.</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:14px"></i><i style="height:22px"></i><i style="height:30px"></i></div>
+          <div class="metric-value" data-count="3.2" data-suffix="M+">0</div>
+          <div class="metric-label">Visualizações geradas</div>
+        </div>
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:18px"></i><i style="height:26px"></i><i style="height:20px"></i></div>
+          <div class="metric-value" data-count="8.4" data-suffix="%">0</div>
+          <div class="metric-label">Taxa média de engajamento</div>
+        </div>
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:24px"></i><i style="height:30px"></i><i style="height:16px"></i></div>
+          <div class="metric-value" data-count="72" data-suffix="%">0</div>
+          <div class="metric-label">Retenção média (hook 3s)</div>
+        </div>
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:12px"></i><i style="height:20px"></i><i style="height:28px"></i></div>
+          <div class="metric-value" data-count="15" data-suffix="+">0</div>
+          <div class="metric-label">Marcas de UGC atendidas</div>
+        </div>
+      </div>
+
+      <div class="segment-portfolio-head">
+        <h3>Vídeos de UGC por categoria</h3>
+      </div>
+
+      <nav class="theme-nav" aria-label="Categorias de UGC">
+        <a href="#tema-casa">🏠 Casa</a>
+        <a href="#tema-tech">💻 Tech</a>
+        <a href="#tema-maternidade">🍼 Maternidade</a>
+        <a href="#tema-diversos">✨ Diversos</a>
+      </nav>
+
+      <div class="theme-block" id="tema-casa">
+        <div class="theme-head"><span class="theme-icon">🏠</span><h3>Casa</h3><span class="theme-count">5 vídeos</span></div>
+        <div class="reel-grid">
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/x_cDFSvars4" title="UGC Casa 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Casa</span><h4>Nome da marca</h4></div></div>
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/OPocmECC9BI" title="UGC Casa 2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Casa</span><h4>Nome da marca</h4></div></div>
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/4BOSjQkBtB8" title="UGC Casa 3" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Casa</span><h4>Nome da marca</h4></div></div>
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/S6LzcdJP6rs" title="UGC Casa 4" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Casa</span><h4>Nome da marca</h4></div></div>
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/Nc9w_M8urJk" title="UGC Casa 5" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Casa</span><h4>Nome da marca</h4></div></div>
+        </div>
+      </div>
+
+      <div class="theme-block" id="tema-tech">
+        <div class="theme-head"><span class="theme-icon">💻</span><h3>Tech</h3><span class="theme-count">2 vídeos</span></div>
+        <div class="reel-grid">
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/vJV-kgT3iEw" title="UGC Tech 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Tech</span><h4>Nome da marca</h4></div></div>
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/XKT9OPbBiKw" title="UGC Tech 2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Tech</span><h4>Nome da marca</h4></div></div>
+        </div>
+      </div>
+
+      <div class="theme-block" id="tema-maternidade">
+        <div class="theme-head"><span class="theme-icon">🍼</span><h3>Maternidade</h3><span class="theme-count">1 vídeo</span></div>
+        <div class="reel-grid">
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/tidxJ5Ox47Y" title="UGC Maternidade 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Maternidade</span><h4>Nome da marca</h4></div></div>
+        </div>
+      </div>
+
+      <div class="theme-block" id="tema-diversos">
+        <div class="theme-head"><span class="theme-icon">✨</span><h3>Diversos</h3><span class="theme-count">1 vídeo</span></div>
+        <div class="reel-grid">
+          <div class="reel-card"><div class="thumb"><iframe class="video-embed" src="https://www.youtube.com/embed/LrwvyFg8XCM" title="UGC Diversos 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><span class="cat">Diversos</span><h4>Nome da marca</h4></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGMENTO TIKTOK SHOP -->
+  <section class="segment shop" id="tiktok-shop">
+    <div class="wrap">
+      <div class="segment-head">
+        <div>
+          <span class="tag">◆ Vídeos shoppable</span>
+          <h2>TikTok Shop que converte scroll em compra</h2>
+        </div>
+        <p>Vídeos otimizados para o funil de vendas do TikTok Shop, com foco em conversão e ticket médio.</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:16px"></i><i style="height:24px"></i><i style="height:32px"></i></div>
+          <div class="metric-value" data-count="180" data-suffix="K+">0</div>
+          <div class="metric-label">GMV gerado (R$)</div>
+        </div>
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:20px"></i><i style="height:28px"></i><i style="height:18px"></i></div>
+          <div class="metric-value" data-count="4.9" data-suffix="K+">0</div>
+          <div class="metric-label">Unidades vendidas</div>
+        </div>
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:22px"></i><i style="height:14px"></i><i style="height:30px"></i></div>
+          <div class="metric-value" data-count="6.8" data-suffix="%">0</div>
+          <div class="metric-label">Taxa média de conversão</div>
+        </div>
+        <div class="metric-card">
+          <div class="bar-deco"><i style="height:12px"></i><i style="height:22px"></i><i style="height:28px"></i></div>
+          <div class="metric-value" data-count="3.5" data-suffix="x">0</div>
+          <div class="metric-label">ROAS médio</div>
+        </div>
+      </div>
+
+      <div class="segment-portfolio-head">
+        <h3>Resultados no TikTok Shop</h3>
+      </div>
+      <div class="reel-grid">
+        <div class="proof-card">
+          <div class="proof-thumb"><img src="assets/venda-live.jpeg" alt="Print do resumo de uma LIVE de vendas no TikTok Shop" loading="lazy"></div>
+          <div class="meta"><span class="cat">Live Shopping</span><h4>Vendas em LIVE</h4></div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-thumb"><img src="assets/maior-venda-dia.jpeg" alt="Print do painel de dados de desempenho do TikTok Shop" loading="lazy"></div>
+          <div class="meta"><span class="cat">Desempenho</span><h4>Maior venda em um único dia</h4></div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-thumb"><img src="assets/video-alcance.jpeg" alt="Print de análise de vídeo com 2,4 milhões de visualizações" loading="lazy"></div>
+          <div class="meta"><span class="cat">Alcance</span><h4>Vídeo com maior alcance</h4></div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-thumb"><img src="assets/video-seguidores.jpeg" alt="Print de análise de vídeo com alto crescimento de seguidores" loading="lazy"></div>
+          <div class="meta"><span class="cat">Conversão</span><h4>Vídeo que mais converteu em seguidores</h4></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services" id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">como trabalhamos juntos</span>
+        <h2>Pacotes para marcas e sellers</h2>
+        <p>Ajuste entregas e valores conforme seu posicionamento e objetivo — visibilidade ou vendas.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="kicker">UGC · Marca</span>
+          <h3>Vídeo de Conteúdo</h3>
+          <div class="service-price">R$ XXX <span>/ vídeo</span></div>
+          <ul>
+            <li>1 vídeo vertical (15–30s)</li>
+            <li>Roteiro + 1 revisão</li>
+            <li>Entrega em até 5 dias</li>
+            <li>Uso em redes da marca</li>
+          </ul>
+          <a href="#contato" class="btn outline">Escolher</a>
+        </div>
+        <div class="service-card featured">
+          <span class="kicker">Combo</span>
+          <h3>UGC + TikTok Shop</h3>
+          <div class="service-price">R$ XXX <span>/ mês</span></div>
+          <ul>
+            <li>4 vídeos (mix conteúdo + shoppable)</li>
+            <li>Direção criativa dedicada</li>
+            <li>2 rodadas de revisão</li>
+            <li>Prioridade na agenda</li>
+          </ul>
+          <a href="#contato" class="btn rose">Escolher</a>
+        </div>
+        <div class="service-card">
+          <span class="kicker">TikTok Shop · Afiliado</span>
+          <h3>Vídeo Shoppable</h3>
+          <div class="service-price">R$ XXX <span>/ vídeo</span></div>
+          <ul>
+            <li>1 vídeo otimizado p/ conversão</li>
+            <li>Gancho + CTA de compra</li>
+            <li>Uso como afiliada TikTok Shop</li>
+            <li>Relatório de performance</li>
+          </ul>
+          <a href="#contato" class="btn outline">Escolher</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="testimonials" id="depoimentos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">o que dizem por aí</span>
+        <h2>Marcas e sellers parceiros</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card ugc">
+          <span class="seg-flag">UGC</span>
+          <p>[Depoimento placeholder — retorno de uma marca sobre engajamento e percepção gerada pelo conteúdo.]</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>Nome</strong><span>Cargo, Marca</span></div></div>
+        </div>
+        <div class="testi-card shop">
+          <span class="seg-flag">TikTok Shop</span>
+          <p>[Depoimento placeholder — retorno de um seller sobre conversão e vendas geradas pelo vídeo shoppable.]</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>Nome</strong><span>Seller, Loja</span></div></div>
+        </div>
+        <div class="testi-card ugc">
+          <span class="seg-flag">UGC</span>
+          <p>[Depoimento placeholder — fale sobre prazo, comunicação e qualidade da entrega.]</p>
+          <div class="testi-who"><div class="testi-avatar"></div><div><strong>Nome</strong><span>Cargo, Marca</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" style="padding-bottom:100px;">
+    <div class="contact">
+      <h2>Pronto pra unir alcance e conversão?</h2>
+      <p>Me chama e vamos alinhar briefing, formato e objetivo — seja construir marca ou vender no TikTok Shop.</p>
+      <div class="cta-row">
+        <a href="mailto:seuemail@exemplo.com" class="btn">Enviar e-mail</a>
+        <a href="https://wa.me/55XXXXXXXXXXX" class="btn outline">Chamar no WhatsApp</a>
+      </div>
+      <div class="social-row">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">TikTok</a>
+        <a href="#" target="_blank" rel="noopener">YouTube</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Letícia Canedo — UGC Creator &amp; TikTok Shop Affiliate.
+</footer>
+
+<script>
+  const counters = document.querySelectorAll('.metric-value');
+  const animate = (el) => {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const isDecimal = String(target).includes('.');
+    const duration = 1200;
+    const start = performance.now();
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = (isDecimal ? value.toFixed(1) : Math.round(value)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
