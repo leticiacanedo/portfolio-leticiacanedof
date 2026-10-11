@@ -4,6 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Letícia Canedo — UGC Creator & TikTok Shop</title>
+
+<!-- =====================================================================
+     ✏️  ÁREA DE ATUALIZAÇÃO DE MÉTRICAS
+     Para atualizar os números do site, edite SOMENTE este bloco.
+     O topo da página (hero) e todos os cards leem os valores daqui.
+
+     Como editar:
+       valor    -> o número, com PONTO decimal (ex.: 8.4). No site aparece 8,4.
+       sufixo   -> o que vem depois do número (%, K+, M+, x, +)
+       prefixo  -> o que vem antes do número (ex.: "R$ ")
+       rotulo   -> o texto abaixo do número
+       decimais -> (opcional) força casas decimais, ex.: decimais: 1 mostra 3,0
+     Mantenha as aspas, as vírgulas no fim de cada linha e as chaves { }.
+     ===================================================================== -->
+<script>
+  // Mês/ano da última atualização. Aparece abaixo dos cards. Deixe "" para esconder.
+  const ATUALIZADO_EM = "";   // ex.: "outubro de 2026"
+
+  const METRICAS = {
+    geral: {
+      marcas:      { valor: 20,  sufixo: "+",  rotulo: "Marcas atendidas" }
+    },
+    ugc: {
+      views:       { valor: 3.2, sufixo: "M+", rotulo: "Visualizações geradas" },
+      engajamento: { valor: 8.4, sufixo: "%",  rotulo: "Taxa média de engajamento" },
+      retencao:    { valor: 72,  sufixo: "%",  rotulo: "Retenção média (hook 3s)" },
+      marcasUgc:   { valor: 15,  sufixo: "+",  rotulo: "Marcas de UGC atendidas" }
+    },
+    shop: {
+      gmv:         { prefixo: "R$ ", valor: 180, sufixo: "K+", rotulo: "GMV gerado" },
+      unidades:    { valor: 4.9, sufixo: "K+", rotulo: "Unidades vendidas" },
+      conversao:   { valor: 6.8, sufixo: "%",  rotulo: "Taxa média de conversão" },
+      roas:        { valor: 3.5, sufixo: "x",  rotulo: "ROAS médio" }
+    }
+  };
+
+  // Os 3 números que aparecem no topo da página (usam os mesmos valores acima).
+  const METRICAS_HERO = ["ugc.views", "shop.gmv", "geral.marcas"];
+</script>
+<!-- ================== FIM DA ÁREA DE ATUALIZAÇÃO ================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -125,6 +165,8 @@
   .segment.ugc .bar-deco i{ background:var(--rose); }
   .segment.shop .bar-deco i{ background:var(--mint); }
   .metric-value{ font-family:'Space Grotesk'; font-size:2.1rem; font-weight:700; }
+  .metrics-updated{ margin:-38px 0 40px; font-size:0.8rem; color:var(--ink-soft); }
+  .metrics-updated:empty{ display:none; }
   .metric-label{ font-size:0.85rem; color:var(--ink-soft); margin-top:6px; font-weight:500; }
 
   /* portfolio grid within segment */
@@ -249,11 +291,7 @@
           <a href="#ugc" class="btn rose">Ver métricas de UGC</a>
           <a href="#tiktok-shop" class="btn mint">Ver métricas TikTok Shop</a>
         </div>
-        <div class="trust">
-          <div>3,2M+ <span>visualizações geradas</span></div>
-          <div>R$ 180K+ <span>em GMV gerado</span></div>
-          <div>20+ <span>marcas atendidas</span></div>
-        </div>
+        <div class="trust" id="hero-metricas"></div>
       </div>
 
       <div class="split-visual" aria-hidden="true">
@@ -305,27 +343,29 @@
       </div>
 
       <div class="metrics-grid">
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="ugc.views">
           <div class="bar-deco"><i style="height:14px"></i><i style="height:22px"></i><i style="height:30px"></i></div>
-          <div class="metric-value" data-count="3.2" data-suffix="M+">0</div>
-          <div class="metric-label">Visualizações geradas</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="ugc.engajamento">
           <div class="bar-deco"><i style="height:18px"></i><i style="height:26px"></i><i style="height:20px"></i></div>
-          <div class="metric-value" data-count="8.4" data-suffix="%">0</div>
-          <div class="metric-label">Taxa média de engajamento</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="ugc.retencao">
           <div class="bar-deco"><i style="height:24px"></i><i style="height:30px"></i><i style="height:16px"></i></div>
-          <div class="metric-value" data-count="72" data-suffix="%">0</div>
-          <div class="metric-label">Retenção média (hook 3s)</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="ugc.marcasUgc">
           <div class="bar-deco"><i style="height:12px"></i><i style="height:20px"></i><i style="height:28px"></i></div>
-          <div class="metric-value" data-count="15" data-suffix="+">0</div>
-          <div class="metric-label">Marcas de UGC atendidas</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
       </div>
+
+      <p class="metrics-updated"></p>
 
       <div class="segment-portfolio-head">
         <h3>Vídeos de UGC por categoria</h3>
@@ -385,27 +425,29 @@
       </div>
 
       <div class="metrics-grid">
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="shop.gmv">
           <div class="bar-deco"><i style="height:16px"></i><i style="height:24px"></i><i style="height:32px"></i></div>
-          <div class="metric-value" data-count="180" data-suffix="K+">0</div>
-          <div class="metric-label">GMV gerado (R$)</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="shop.unidades">
           <div class="bar-deco"><i style="height:20px"></i><i style="height:28px"></i><i style="height:18px"></i></div>
-          <div class="metric-value" data-count="4.9" data-suffix="K+">0</div>
-          <div class="metric-label">Unidades vendidas</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="shop.conversao">
           <div class="bar-deco"><i style="height:22px"></i><i style="height:14px"></i><i style="height:30px"></i></div>
-          <div class="metric-value" data-count="6.8" data-suffix="%">0</div>
-          <div class="metric-label">Taxa média de conversão</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-metrica="shop.roas">
           <div class="bar-deco"><i style="height:12px"></i><i style="height:22px"></i><i style="height:28px"></i></div>
-          <div class="metric-value" data-count="3.5" data-suffix="x">0</div>
-          <div class="metric-label">ROAS médio</div>
+          <div class="metric-value">—</div>
+          <div class="metric-label"></div>
         </div>
       </div>
+
+      <p class="metrics-updated"></p>
 
       <div class="segment-portfolio-head">
         <h3>Resultados no TikTok Shop</h3>
@@ -514,13 +556,11 @@
       <p>Me chama e vamos alinhar briefing, formato e objetivo — seja construir marca ou vender no TikTok Shop.</p>
       <div class="cta-row">
         <a href="mailto:leticiacanedougc@gmail.com" class="btn">Enviar e-mail</a>
-        <a href="https://wa.me/55XXXXXXXXXXX" class="btn outline">Chamar no WhatsApp</a>
+        <a href="https://www.instagram.com/leticiacanedof" target="_blank" rel="noopener" class="btn outline">Chamar no Instagram</a>
       </div>
       <div class="social-row">
-        <a href="@leticiacanedof" target="_blank" rel="noopener">Instagram</a>
-        <a href="@leticiacanedof" target="_blank" rel="noopener">TikTok</a>
-        <a href="#" target="_blank" rel="noopener">YouTube</a>
-        <a href="www.linkedin.com.br" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/leticiacanedof" target="_blank" rel="noopener">Instagram · @leticiacanedof</a>
+        <a href="https://www.tiktok.com/@leticiacanedof" target="_blank" rel="noopener">TikTok · @leticiacanedof</a>
       </div>
     </div>
   </section>
@@ -532,31 +572,73 @@
 </footer>
 
 <script>
-  const counters = document.querySelectorAll('.metric-value');
-  const animate = (el) => {
-    const target = parseFloat(el.dataset.count);
-    const suffix = el.dataset.suffix || '';
-    const isDecimal = String(target).includes('.');
-    const duration = 1200;
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = target * eased;
-      el.textContent = (isDecimal ? value.toFixed(1) : Math.round(value)) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
+  // Lê os valores do bloco METRICAS (no topo do arquivo) e monta hero + cards.
+  const lerMetrica = (caminho) => caminho.split('.').reduce((o, k) => (o ? o[k] : undefined), METRICAS);
+  const casasDecimais = (m) => {
+    if (m.decimais !== undefined) return m.decimais;
+    const s = String(m.valor);
+    return s.includes('.') ? s.split('.')[1].length : 0;
   };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animate(entry.target);
-        observer.unobserve(entry.target);
+  const formatar = (m, v) => {
+    const c = casasDecimais(m);
+    return (m.prefixo || '') +
+      v.toLocaleString('pt-BR', { minimumFractionDigits: c, maximumFractionDigits: c }) +
+      (m.sufixo || '');
+  };
+
+  // Hero
+  const heroEl = document.getElementById('hero-metricas');
+  METRICAS_HERO.forEach((caminho) => {
+    const m = lerMetrica(caminho);
+    if (!m) { console.warn('Métrica não encontrada no hero:', caminho); return; }
+    const item = document.createElement('div');
+    item.appendChild(document.createTextNode(formatar(m, m.valor) + ' '));
+    const rotulo = document.createElement('span');
+    rotulo.textContent = m.rotulo;
+    item.appendChild(rotulo);
+    heroEl.appendChild(item);
+  });
+
+  // Data de atualização
+  if (typeof ATUALIZADO_EM === 'string' && ATUALIZADO_EM.trim()) {
+    document.querySelectorAll('.metrics-updated').forEach((el) => {
+      el.textContent = 'Dados atualizados em ' + ATUALIZADO_EM.trim() + '.';
+    });
+  }
+
+  // Cards (valor final já visível; a contagem anima quando o card entra na tela)
+  const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animar = (el, m) => {
+    const duracao = 1200;
+    const inicio = performance.now();
+    const passo = (agora) => {
+      const progresso = Math.min((agora - inicio) / duracao, 1);
+      const suavizado = 1 - Math.pow(1 - progresso, 3);
+      el.textContent = formatar(m, progresso < 1 ? m.valor * suavizado : m.valor);
+      if (progresso < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  };
+  const observador = ('IntersectionObserver' in window) ? new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        animar(entrada.target, entrada.target._metrica);
+        observador.unobserve(entrada.target);
       }
     });
-  }, { threshold: 0.4 });
-  counters.forEach(el => observer.observe(el));
+  }, { threshold: 0.4 }) : null;
+
+  document.querySelectorAll('.metric-card[data-metrica]').forEach((card) => {
+    const m = lerMetrica(card.dataset.metrica);
+    if (!m) { console.warn('Métrica não encontrada no card:', card.dataset.metrica); return; }
+    const valorEl = card.querySelector('.metric-value');
+    card.querySelector('.metric-label').textContent = m.rotulo;
+    valorEl.textContent = formatar(m, m.valor);
+    if (observador && !reduzirMovimento) {
+      valorEl._metrica = m;
+      observador.observe(valorEl);
+    }
+  });
 </script>
 
 </body>
