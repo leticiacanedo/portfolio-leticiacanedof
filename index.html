@@ -6,8 +6,8 @@
 <title>Letícia Canedo — UGC Creator & TikTok Shop</title>
 
 <!-- =====================================================================
-     ✏️  ÁREA DE ATUALIZAÇÃO DE MÉTRICAS
-     Para atualizar os números do site, edite SOMENTE este bloco.
+     ✏️  ÁREA DE CONFIGURAÇÃO (métricas, fotos e logos)
+     Para atualizar números, fotos e logos do site, edite SOMENTE este bloco.
      O topo da página (hero) e todos os cards leem os valores daqui.
 
      Como editar:
@@ -24,7 +24,7 @@
 
   const METRICAS = {
     geral: {
-      marcas:      { valor: 20,  sufixo: "+",  rotulo: "Marcas atendidas" }
+      marcas:      { valor: 80,  sufixo: "+",  rotulo: "Marcas atendidas" }
     },
     ugc: {
       views:       { valor: 3.2, sufixo: "M+", rotulo: "Visualizações geradas" },
@@ -80,7 +80,7 @@
     { nome: "Sam's Club",    arquivo: "" }
   ];
 </script>
-<!-- ================== FIM DA ÁREA DE ATUALIZAÇÃO ================== -->
+<!-- ================== FIM DA ÁREA DE CONFIGURAÇÃO ================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -154,18 +154,6 @@
   .hero .trust div{ font-family:'Space Grotesk'; font-size:1.5rem; font-weight:700; }
   .hero .trust span{ display:block; font-family:'Inter'; font-size:0.78rem; font-weight:500; color:var(--ink-soft); margin-top:2px; }
 
-  /* split phones */
-  .split-visual{ position:relative; height:460px; display:flex; align-items:center; justify-content:center; gap:18px; }
-  .phone{ width:190px; height:390px; background:var(--surface); border:1px solid var(--line); border-radius:34px; box-shadow:var(--shadow); padding:10px; display:flex; flex-direction:column; gap:8px; }
-  .phone.ugc{ transform:rotate(-5deg) translateY(10px); }
-  .phone.shop{ transform:rotate(5deg) translateY(-10px); }
-  .phone .screen{ flex:1; border-radius:24px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:14px; }
-  .phone.ugc .screen{ background:linear-gradient(165deg, #F7DEE6, #DCCBF2); }
-  .phone.shop .screen{ background:linear-gradient(165deg, #D7EFE2, #F3E1C4); }
-  .phone .screen .top-badge{ align-self:flex-start; background:rgba(255,255,255,0.85); border-radius:100px; padding:5px 12px; font-size:0.68rem; font-weight:700; font-family:'Space Grotesk'; }
-  .phone .screen .bottom-badge{ background:rgba(42,39,51,0.85); color:#fff; border-radius:12px; padding:8px 10px; font-size:0.72rem; font-weight:600; }
-  .phone .play{ position:absolute; top:44%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-sm); }
-  .connector-label{ position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--bg); font-family:'Space Grotesk'; font-size:0.72rem; font-weight:600; padding:8px 16px; border-radius:100px; white-space:nowrap; box-shadow:var(--shadow-sm); }
 
   /* ---------- TRUST STRIP ---------- */
   .trust-strip{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0; }
@@ -174,12 +162,44 @@
   .trust-strip .logos{ display:flex; gap:34px; flex-wrap:wrap; opacity:0.7; }
   .trust-strip .logos span{ font-family:'Space Grotesk'; font-weight:600; font-size:0.98rem; }
 
-  /* brand marquee */
-  .brand-marquee{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface); padding:22px 0; overflow:hidden; white-space:nowrap; }
-  .brand-marquee-track{ display:inline-flex; gap:3.2rem; animation:brand-scroll 26s linear infinite; }
-  .brand-marquee-track span{ font-family:'Space Grotesk'; font-weight:600; font-size:1.05rem; color:var(--ink-soft); opacity:0.75; letter-spacing:0.01em; }
-  @keyframes brand-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-  .brand-marquee:hover .brand-marquee-track{ animation-play-state:paused; }
+  /* ---------- FOTOS (espaços reservados) ---------- */
+  .photo-slot{ position:relative; overflow:hidden; background:linear-gradient(150deg, #F7DEE6, #DCCBF2 55%, #D7EFE2); }
+  .photo-slot img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .photo-placeholder{ position:absolute; inset:12px; border:2px dashed rgba(42,39,51,0.25); border-radius:18px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center; padding:12px; color:var(--ink-soft); font-family:'Space Grotesk'; font-weight:600; }
+  .photo-placeholder small{ font-family:'Inter'; font-weight:500; font-size:0.78rem; opacity:0.85; }
+  .photo-slot.has-photo .photo-placeholder{ display:none; }
+
+  /* banner */
+  .banner{ border-bottom:1px solid var(--line); }
+  .banner-slot{ height:clamp(200px, 31vw, 440px); }
+
+  /* foto do hero */
+  .hero-photo{ position:relative; width:100%; max-width:440px; margin:0 auto; }
+  .hero-photo::before{ content:""; position:absolute; inset:22px -16px -16px 22px; border-radius:34px; background:linear-gradient(150deg, var(--rose), var(--mint)); opacity:0.35; }
+  .hero-photo-frame{ position:relative; z-index:1; aspect-ratio:4/5; border-radius:32px; border:1px solid var(--line); box-shadow:var(--shadow); }
+  .chip{ position:absolute; z-index:2; font-family:'Space Grotesk'; font-weight:600; font-size:0.8rem; padding:9px 16px; border-radius:100px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
+  .chip-ugc{ top:26px; left:-18px; color:var(--rose-deep); transform:rotate(-4deg); }
+  .chip-shop{ bottom:34px; right:-18px; color:var(--mint-deep); transform:rotate(3deg); }
+
+  /* sobre mim */
+  .about-grid{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:64px; align-items:center; max-width:1040px; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:40px; } .about-photo{ max-width:360px; } }
+  .about-photo{ position:relative; }
+  .about-photo::before{ content:""; position:absolute; inset:-14px 18px 18px -14px; border-radius:30px; background:linear-gradient(150deg, var(--lilac), var(--rose)); opacity:0.4; }
+  .about-photo-frame{ position:relative; aspect-ratio:4/5; border-radius:28px; border:1px solid var(--line); box-shadow:var(--shadow); }
+
+  /* brand marquee (logos) */
+  .brand-marquee{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface); padding:20px 0; overflow:hidden; }
+  .brand-marquee-track{ display:flex; width:max-content; animation:brand-scroll 40s linear infinite; }
+  .brand-marquee:hover .brand-marquee-track, .brand-marquee.pausada .brand-marquee-track{ animation-play-state:paused; }
+  @keyframes brand-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-25%); } }
+  .brand-item{ flex:none; display:flex; align-items:center; justify-content:center; height:48px; margin-right:3.4rem; cursor:default; }
+  .brand-item img{ height:34px; width:auto; max-width:130px; object-fit:contain; filter:grayscale(1); opacity:0.6; transition:filter .2s ease, opacity .2s ease, transform .2s ease; }
+  .brand-item:hover img{ filter:none; opacity:1; transform:scale(1.07); }
+  .brand-name{ font-family:'Space Grotesk'; font-weight:600; font-size:1.05rem; white-space:nowrap; color:var(--ink-soft); opacity:0.75; transition:color .2s ease, opacity .2s ease; }
+  .brand-item:hover .brand-name{ color:var(--ink); opacity:1; }
+  .brand-tooltip{ position:fixed; z-index:100; pointer-events:none; background:var(--ink); color:var(--bg); font-family:'Space Grotesk'; font-size:0.78rem; font-weight:600; padding:7px 14px; border-radius:100px; box-shadow:var(--shadow); white-space:nowrap; transform:translate(-50%, -100%); }
+  .brand-tooltip.abaixo{ transform:translate(-50%, 0); }
 
   /* ---------- SEGMENT SECTIONS ---------- */
   .segment{ padding:96px 0; }
@@ -193,8 +213,11 @@
   .segment-head p{ color:var(--ink-soft); max-width:38ch; font-size:1rem; }
 
   /* metrics */
-  .metrics-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:56px; }
-  @media (max-width:900px){ .metrics-grid{ grid-template-columns:repeat(2,1fr); } }
+  .metrics-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:18px; margin-bottom:56px; }
+  @media (max-width:900px){
+    .metrics-grid{ grid-template-columns:repeat(2,1fr); }
+    .metrics-grid > .metric-card:last-child:nth-child(odd){ grid-column:1 / -1; }
+  }
   .metric-card{ background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:26px 22px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; }
   .segment.shop .metric-card{ border-color:var(--line-shop); }
   .metric-card .bar-deco{ position:absolute; right:16px; top:20px; display:flex; align-items:flex-end; gap:3px; height:34px; opacity:0.5; }
@@ -309,13 +332,19 @@
       <a href="#ugc">UGC</a>
       <a href="#tiktok-shop">TikTok Shop</a>
       <a href="#servicos">Serviços</a>
-      <a href="#depoimentos">Depoimentos</a>
     </div>
     <a href="#contato" class="btn nav-cta">Falar comigo</a>
   </nav>
 </header>
 
 <main id="top">
+
+  <!-- BANNER (foto 1 de 3) -->
+  <div class="banner">
+    <div class="photo-slot banner-slot" data-foto="banner">
+      <div class="photo-placeholder"><span>📸 Banner do topo</span><small>Foto horizontal · 1920 × 600 px · deixe o rosto no centro</small></div>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -331,40 +360,35 @@
         <div class="trust" id="hero-metricas"></div>
       </div>
 
-      <div class="split-visual" aria-hidden="true">
-        <div class="phone ugc">
-          <div class="screen">
-            <span class="top-badge">UGC</span>
-            <div class="play">▶</div>
-            <span class="bottom-badge">Review autêntico</span>
-          </div>
+      <div class="hero-photo">
+        <div class="photo-slot hero-photo-frame" data-foto="hero">
+          <div class="photo-placeholder"><span>📸 Foto do hero</span><small>Vertical 4:5 · 1200 × 1500 px</small></div>
         </div>
-        <div class="phone shop">
-          <div class="screen">
-            <span class="top-badge">TikTok Shop</span>
-            <div class="play">▶</div>
-            <span class="bottom-badge">Vídeo shoppable</span>
-          </div>
-        </div>
-        <span class="connector-label">um portfólio, dois públicos</span>
+        <span class="chip chip-ugc" aria-hidden="true">🎬 UGC</span>
+        <span class="chip chip-shop" aria-hidden="true">🛍 TikTok Shop</span>
       </div>
     </div>
   </section>
 
-  <!-- BRAND MARQUEE -->
-  <div class="brand-marquee" aria-label="Marcas que já confiaram no trabalho de Letícia Canedo">
-    <div class="brand-marquee-track">
-      <span>Pampers</span><span>Americanas</span><span>Rap10</span><span>Kinedu</span><span>Leiturinha</span><span>Natura</span><span>L'Oréal Paris</span><span>CIF</span><span>Magalu</span><span>Sam's Club</span>
-      <span>Pampers</span><span>Americanas</span><span>Rap10</span><span>Kinedu</span><span>Leiturinha</span><span>Natura</span><span>L'Oréal Paris</span><span>CIF</span><span>Magalu</span><span>Sam's Club</span>
-    </div>
+  <!-- BRAND MARQUEE (logos configuráveis em LOGOS, no topo do arquivo) -->
+  <div class="brand-marquee" id="brand-marquee" role="region" aria-label="Marcas que já confiaram no trabalho de Letícia Canedo">
+    <div class="brand-marquee-track" id="brand-track"></div>
   </div>
+  <div class="brand-tooltip" id="brand-tooltip" role="tooltip" hidden></div>
 
   <!-- SOBRE -->
   <section id="sobre" style="padding:96px 0 40px;">
-    <div class="wrap" style="max-width:720px;">
+    <div class="wrap about-grid">
+      <div class="about-photo">
+        <div class="photo-slot about-photo-frame" data-foto="sobre">
+          <div class="photo-placeholder"><span>📸 Foto do Sobre mim</span><small>Vertical 4:5 · 1000 × 1250 px</small></div>
+        </div>
+      </div>
+      <div class="about-copy">
       <span class="section-head-tag" style="font-family:'Space Grotesk'; font-weight:600; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--lilac-deep); display:block; margin-bottom:12px;">sobre mim</span>
       <h2 style="font-size:clamp(1.8rem,3.2vw,2.3rem); margin-bottom:18px;">A pessoa por trás da câmera — e das vendas</h2>
       <p style="color:var(--ink-soft); font-size:1.05rem;">Mineira de BH, UGC, influenciadora, mãe de duas, esposa e apaixonada por compartilhar a vida real! Divido meu dia a dia entre maternidade, rotina de casa e dicas práticas que facilitam a vida. Minha conexão com mulheres e mães me permite entender suas necessidades e desejos, criando estratégias autênticas que fortalecem a relação entre elas e a marca. Faço da comunicação uma arte, traduzindo emoções em resultados.</p>
+      </div>
     </div>
   </section>
 
@@ -477,11 +501,6 @@
           <div class="metric-value">—</div>
           <div class="metric-label"></div>
         </div>
-        <div class="metric-card" data-metrica="shop.roas">
-          <div class="bar-deco"><i style="height:12px"></i><i style="height:22px"></i><i style="height:28px"></i></div>
-          <div class="metric-value">—</div>
-          <div class="metric-label"></div>
-        </div>
       </div>
 
       <p class="metrics-updated"></p>
@@ -516,7 +535,7 @@
       <div class="section-head">
         <span class="tag">como trabalhamos juntos</span>
         <h2>Pacotes para marcas e sellers</h2>
-        <p>Ajuste entregas e valores conforme seu posicionamento e objetivo — visibilidade ou vendas.</p>
+        <p>Escolha o formato ideal para o objetivo da sua marca!</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
@@ -545,7 +564,7 @@
         </div>
         <div class="service-card">
           <span class="kicker">TikTok Shop</span>
-          <h3>Combo sLive Shop + Vídeos</h3>
+          <h3>Combo Live Shop + Vídeos</h3>
           <div class="service-price">R$700<span>/ 2 Lives</span></div>
           <ul>
             <li>2 Lives no perfil da Creator</li>
@@ -639,7 +658,7 @@
 
   document.querySelectorAll('.metric-card[data-metrica]').forEach((card) => {
     const m = lerMetrica(card.dataset.metrica);
-    if (!m) { console.warn('Métrica não encontrada no card:', card.dataset.metrica); return; }
+    if (!m) { console.warn('Métrica não encontrada no card:', card.dataset.metrica); card.hidden = true; return; }
     const valorEl = card.querySelector('.metric-value');
     card.querySelector('.metric-label').textContent = m.rotulo;
     valorEl.textContent = formatar(m, m.valor);
@@ -648,6 +667,92 @@
       observador.observe(valorEl);
     }
   });
+
+  // ---------- Fotos ----------
+  document.querySelectorAll('.photo-slot[data-foto]').forEach((slot) => {
+    const cfg = (typeof FOTOS !== 'undefined') ? FOTOS[slot.dataset.foto] : null;
+    if (!cfg || !cfg.arquivo) return;                       // sem arquivo: mantém o espaço reservado
+    const img = document.createElement('img');
+    img.src = cfg.arquivo;
+    img.alt = cfg.alt || '';
+    img.decoding = 'async';
+    if (slot.dataset.foto === 'sobre') img.loading = 'lazy';
+    if (cfg.posicao) img.style.objectPosition = cfg.posicao;
+    img.addEventListener('error', () => { img.remove(); slot.classList.remove('has-photo'); });
+    let alvo = img;
+    if (cfg.arquivoMobile) {
+      const pic = document.createElement('picture');
+      const fonte = document.createElement('source');
+      fonte.media = '(max-width: 640px)';
+      fonte.srcset = cfg.arquivoMobile;
+      pic.appendChild(fonte);
+      pic.appendChild(img);
+      alvo = pic;
+    }
+    slot.appendChild(alvo);
+    slot.classList.add('has-photo');
+  });
+
+  // ---------- Fita de marcas (logos) + tooltip ----------
+  (() => {
+    const fita = document.getElementById('brand-marquee');
+    const trilha = document.getElementById('brand-track');
+    const dica = document.getElementById('brand-tooltip');
+    if (!fita || !trilha || !dica || typeof LOGOS === 'undefined' || !LOGOS.length) return;
+
+    const COPIAS = 4;   // 4 cópias + deslocamento de 25% = rolagem contínua sem emenda
+    for (let c = 0; c < COPIAS; c++) {
+      LOGOS.forEach((marca) => {
+        const item = document.createElement('div');
+        item.className = 'brand-item';
+        item.dataset.nome = marca.nome;
+        if (c > 0) item.setAttribute('aria-hidden', 'true');   // só a 1ª cópia é lida por leitores de tela
+        const comoTexto = () => {
+          const s = document.createElement('span');
+          s.className = 'brand-name';
+          s.textContent = marca.nome;
+          return s;
+        };
+        if (marca.arquivo) {
+          const img = document.createElement('img');
+          img.src = marca.arquivo;
+          img.alt = c === 0 ? marca.nome : '';
+          img.addEventListener('error', () => img.replaceWith(comoTexto()));
+          item.appendChild(img);
+        } else {
+          item.appendChild(comoTexto());
+        }
+        trilha.appendChild(item);
+      });
+    }
+    trilha.style.animationDuration = (LOGOS.length * 3.2) + 's';   // velocidade constante
+
+    const esconder = () => { dica.hidden = true; };
+    const mostrar = (item) => {
+      dica.textContent = item.dataset.nome;
+      dica.hidden = false;
+      const r = item.getBoundingClientRect();
+      const x = Math.min(Math.max(r.left + r.width / 2, 70), window.innerWidth - 70);
+      const abaixo = r.top < 50;
+      dica.classList.toggle('abaixo', abaixo);
+      dica.style.left = x + 'px';
+      dica.style.top = (abaixo ? r.bottom + 10 : r.top - 10) + 'px';
+    };
+
+    let temporizador;
+    trilha.addEventListener('pointerover', (e) => {
+      const item = e.target.closest('.brand-item');
+      if (!item) { esconder(); return; }
+      mostrar(item);
+      if (e.pointerType === 'touch') {                       // toque: pausa por 2,5 s
+        fita.classList.add('pausada');
+        clearTimeout(temporizador);
+        temporizador = setTimeout(() => { fita.classList.remove('pausada'); esconder(); }, 2500);
+      }
+    });
+    trilha.addEventListener('pointerleave', (e) => { if (e.pointerType !== 'touch') esconder(); });
+    window.addEventListener('scroll', esconder, { passive: true });
+  })();
 </script>
 
 </body>
