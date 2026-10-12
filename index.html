@@ -39,8 +39,46 @@
     }
   };
 
+
   // Os 3 números que aparecem no topo da página (usam os mesmos valores acima).
   const METRICAS_HERO = ["ugc.views", "shop.gmv", "geral.marcas"];
+ 
+  // ---------------------------------------------------------------------
+  // FOTOS — são 3: banner (topo), hero (ao lado do título) e sobre (Sobre mim).
+  // Suba as imagens na pasta assets/fotos/ do repositório e preencha o caminho.
+  // Enquanto "arquivo" estiver vazio, aparece uma caixa tracejada de espaço reservado.
+  //   arquivo        -> ex.: "assets/fotos/banner.jpg"
+  //   arquivoMobile  -> (opcional, só banner) versão recortada para celular
+  //   alt            -> descrição da foto (acessibilidade)
+  //   posicao        -> parte da foto que fica visível quando houver corte
+  //                     (ex.: "center", "center top", "30% 20%")
+  // Tamanhos recomendados: banner 1920×600 · hero 1200×1500 · sobre 1000×1250
+  // ---------------------------------------------------------------------
+  const FOTOS = {
+    banner: { arquivo: "", arquivoMobile: "", alt: "Letícia Canedo, criadora de conteúdo UGC", posicao: "center" },
+    hero:   { arquivo: "", alt: "Letícia Canedo gravando conteúdo", posicao: "center top" },
+    sobre:  { arquivo: "", alt: "Retrato de Letícia Canedo", posicao: "center top" }
+  };
+ 
+  // ---------------------------------------------------------------------
+  // LOGOS DA FITA DE MARCAS — um item por marca, na ordem em que aparecem.
+  // Suba os logos em assets/logos/ (PNG ou SVG com fundo transparente, de
+  // preferência horizontais) e preencha "arquivo", ex.: "assets/logos/pampers.png".
+  // Sem "arquivo" (ou se a imagem falhar), a fita mostra o nome em texto.
+  // O "nome" também é o texto da dica que aparece ao passar o mouse.
+  // ---------------------------------------------------------------------
+  const LOGOS = [
+    { nome: "Pampers",       arquivo: "" },
+    { nome: "Americanas",    arquivo: "" },
+    { nome: "Rap10",         arquivo: "" },
+    { nome: "Kinedu",        arquivo: "" },
+    { nome: "Leiturinha",    arquivo: "" },
+    { nome: "Natura",        arquivo: "" },
+    { nome: "L'Oréal Paris", arquivo: "" },
+    { nome: "CIF",           arquivo: "" },
+    { nome: "Magalu",        arquivo: "" },
+    { nome: "Sam's Club",    arquivo: "" }
+  ];
 </script>
 <!-- ================== FIM DA ÁREA DE ATUALIZAÇÃO ================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
