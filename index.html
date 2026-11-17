@@ -44,20 +44,25 @@
   const METRICAS_HERO = ["ugc.views", "shop.gmv", "geral.marcas"];
  
   // ---------------------------------------------------------------------
-  // FOTOS — são 3: banner (topo), hero (ao lado do título) e sobre (Sobre mim).
-  // Suba as imagens na pasta assets/fotos/ do repositório e preencha o caminho.
+  // FOTOS — são 2: hero (ao lado do título) e sobre (Sobre mim).
+  // Suba as imagens na pasta assets/ do repositório e preencha o caminho.
   // Enquanto "arquivo" estiver vazio, aparece uma caixa tracejada de espaço reservado.
-  //   arquivo        -> ex.: "assets/fotos/banner.jpg"
-  //   arquivoMobile  -> (opcional, só banner) versão recortada para celular
+  //   arquivo        -> ex.: "assets/hero-recorte.webp"
   //   alt            -> descrição da foto (acessibilidade)
   //   posicao        -> parte da foto que fica visível quando houver corte
   //                     (ex.: "center", "center top", "30% 20%")
-  // Tamanhos recomendados: banner 1920×600 · hero 1200×1500 · sobre 1000×1250
+  //   recorte        -> (só hero) true quando a foto é SEM FUNDO (PNG/WebP
+  //                     transparente). Ela aparece inteira, apoiada na base,
+  //                     sem moldura e sem corte. false = foto comum 4:5.
+  //
+  // Foto do hero recortada: qualquer retrato vertical em plano médio
+  // (da cintura para cima) serve. Tire o fundo (remove.bg, Canva ou iPhone)
+  // e salve como .png ou .webp. Não precisa de tamanho exato.
+  // Foto do Sobre: vertical 4:5 · 1000 × 1250 px
   // ---------------------------------------------------------------------
   const FOTOS = {
-    banner: { arquivo: "assets/Banner.jpeg", arquivoMobile: "", alt: "Letícia Canedo, criadora de conteúdo UGC", posicao: "center" },
-    hero:   { arquivo: "assets/Foto1.jpeg", alt: "Letícia Canedo gravando conteúdo", posicao: "center top" },
-    sobre:  { arquivo: "assets/Foto2.jpeg", alt: "Retrato de Letícia Canedo", posicao: "center top" }
+    hero:   { arquivo: "assets/hero-recorte.webp", alt: "Letícia Canedo de blazer rosa, com a mão no queixo, sorrindo", recorte: true },
+    sobre:  { arquivo: "assets/Foto1.jpeg", alt: "Letícia Canedo gravando conteúdo", posicao: "center top" }
   };
  
   // ---------------------------------------------------------------------
@@ -169,14 +174,16 @@
   .photo-placeholder small{ font-family:'Inter'; font-weight:500; font-size:0.78rem; opacity:0.85; }
   .photo-slot.has-photo .photo-placeholder{ display:none; }
 
-  /* banner */
-  .banner{ border-bottom:1px solid var(--line); }
-  .banner-slot{ height:clamp(200px, 31vw, 440px); }
-
   /* foto do hero */
   .hero-photo{ position:relative; width:100%; max-width:440px; margin:0 auto; }
   .hero-photo::before{ content:""; position:absolute; inset:22px -16px -16px 22px; border-radius:34px; background:linear-gradient(150deg, var(--rose), var(--mint)); opacity:0.35; }
   .hero-photo-frame{ position:relative; z-index:1; aspect-ratio:4/5; border-radius:32px; border:1px solid var(--line); box-shadow:var(--shadow); }
+  /* foto do hero SEM FUNDO (recorte: true) — arco colorido atrás e a foto
+     apoiada na base, "vazando" por cima do arco. Nada é cortado. */
+  .hero-photo.com-recorte::before{ inset:16% 4% 0 4%; border-radius:999px 999px 36px 36px; background:linear-gradient(160deg, var(--rose), var(--lilac) 55%, var(--mint)); opacity:0.55; }
+  .hero-photo.com-recorte .hero-photo-frame{ background:none; border:0; box-shadow:none; border-radius:0; overflow:visible; }
+  .hero-photo.com-recorte .hero-photo-frame img{ object-fit:contain; object-position:center bottom; }
+  @media (max-width:940px){ .hero-photo{ max-width:360px; } }
   .chip{ position:absolute; z-index:2; font-family:'Space Grotesk'; font-weight:600; font-size:0.8rem; padding:9px 16px; border-radius:100px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
   .chip-ugc{ top:26px; left:-18px; color:var(--rose-deep); transform:rotate(-4deg); }
   .chip-shop{ bottom:34px; right:-18px; color:var(--mint-deep); transform:rotate(3deg); }
@@ -339,13 +346,6 @@
 
 <main id="top">
 
-  <!-- BANNER (foto 1 de 3) -->
-  <div class="banner">
-    <div class="photo-slot banner-slot" data-foto="banner">
-      <div class="photo-placeholder"><span>📸 Banner do topo</span><small>Foto horizontal · 1920 × 600 px · deixe o rosto no centro</small></div>
-    </div>
-  </div>
-
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
@@ -362,7 +362,7 @@
 
       <div class="hero-photo">
         <div class="photo-slot hero-photo-frame" data-foto="hero">
-          <div class="photo-placeholder"><span>📸 Foto do hero</span><small>Vertical 4:5 · 1200 × 1500 px</small></div>
+          <div class="photo-placeholder"><span>📸 Foto do hero</span><small>Retrato em plano médio, de preferência sem fundo</small></div>
         </div>
         <span class="chip chip-ugc" aria-hidden="true">🎬 UGC</span>
         <span class="chip chip-shop" aria-hidden="true">🛍 TikTok Shop</span>
@@ -678,7 +678,8 @@
     img.decoding = 'async';
     if (slot.dataset.foto === 'sobre') img.loading = 'lazy';
     if (cfg.posicao) img.style.objectPosition = cfg.posicao;
-    img.addEventListener('error', () => { img.remove(); slot.classList.remove('has-photo'); });
+    if (cfg.recorte) slot.closest('.hero-photo')?.classList.add('com-recorte');
+    img.addEventListener('error', () => { img.remove(); slot.classList.remove('has-photo'); slot.closest('.hero-photo')?.classList.remove('com-recorte'); });
     let alvo = img;
     if (cfg.arquivoMobile) {
       const pic = document.createElement('picture');
